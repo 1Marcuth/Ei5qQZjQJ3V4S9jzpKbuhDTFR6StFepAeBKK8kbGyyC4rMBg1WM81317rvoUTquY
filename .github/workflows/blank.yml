@@ -18,24 +18,14 @@ jobs:
       with:
         node-version: '14'
 
+    - name: Install dependencies
+      run: npm install axios
+
     - name: Fetch data from API
       env:
         USER_ID: ${{ secrets.USER_ID }}
         AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
-      run: |
-        echo 'const fs = require("fs");' > fetchData.js
-        echo 'const axios = require("axios");' >> fetchData.js
-        echo 'const userId = process.env.USER_ID;' >> fetchData.js
-        echo 'const authToken = process.env.AUTH_TOKEN;' >> fetchData.js
-        echo 'axios.get("https://api.example.com/data", {' >> fetchData.js
-        echo '  params: { userId: userId, authToken: authToken }' >> fetchData.js
-        echo '}).then(response => {' >> fetchData.js
-        echo '  fs.writeFileSync("data.json", JSON.stringify(response.data, null, 2));' >> fetchData.js
-        echo '}).catch(error => {' >> fetchData.js
-        echo '  console.error("Error fetching data:", error);' >> fetchData.js
-        echo '  process.exit(1);' >> fetchData.js
-        echo '});' >> fetchData.js
-        node fetchData.js
+      run: node fetchData.js
 
     - name: Commit and push changes
       run: |
