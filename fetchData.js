@@ -6,7 +6,7 @@ async function fetchData() {
   const authToken = process.env.AUTH_TOKEN;
 
   try {
-    const response = await axios.get(process.env.ENDPOINT_URL, {
+    const response = await axios.post(process.env.ENDPOINT_URL, {
       params: {
         userId: userId,
         authToken: authToken
