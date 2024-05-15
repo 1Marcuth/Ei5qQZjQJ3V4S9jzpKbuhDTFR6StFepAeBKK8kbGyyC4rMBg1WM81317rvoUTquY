@@ -9,9 +9,12 @@ async function fetchData() {
   console.log(`Requesting data from ${endpointUrl} with userId ${userId} and authToken ${authToken}`);
 
   try {
-    const response = await axios.post(endpointUrl, {
-      userId: userId,
-      authToken: authToken
+    const response = await axios.post(endpointUrl, null, { params: {
+        userId: userId,
+        authToken: authToken,
+        language: "en",
+        platform: "ios"
+      }
     });
 
     fs.writeFileSync('data.json', JSON.stringify(response.data, null, 2));
