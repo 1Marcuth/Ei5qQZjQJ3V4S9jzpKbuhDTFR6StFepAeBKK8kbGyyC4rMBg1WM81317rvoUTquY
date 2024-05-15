@@ -6,6 +6,8 @@ async function fetchData() {
   const authToken = process.env.AUTH_TOKEN;
   const endpointUrl = process.env.ENDPOINT_URL;
 
+  console.log(`Requesting data from ${endpointUrl} with userId ${userId} and authToken ${authToken}`);
+
   try {
     const response = await axios.post(endpointUrl, {
       userId: userId,
@@ -15,6 +17,7 @@ async function fetchData() {
     fs.writeFileSync('data.json', JSON.stringify(response.data, null, 2));
   } catch (error) {
     console.error('Error fetching data:', error);
+    console.log(`Requesting data from ${endpointUrl} with userId ${userId} and authToken ${authToken}`);
     process.exit(1);
   }
 }
