@@ -2,7 +2,7 @@ name: Fetch API Data
 
 on:
   schedule:
-    - cron: '0 9 * * *'  # Executa diariamente à meia-noite UTC
+    - cron: '0 9 * * *'
   workflow_dispatch:  # Permite execução manual
 
 jobs:
