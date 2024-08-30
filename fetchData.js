@@ -18,7 +18,6 @@ async function fetchData() {
     fs.writeFileSync('data.json', JSON.stringify(response.data));
   } catch (error) {
     console.error('Error fetching data:', error);
-    console.log(`Requesting data from ${endpointUrl} with userId ${userId} and authToken ${authToken}`);
     process.exit(1);
   }
 }
